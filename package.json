@@ -4,9 +4,11 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
+    "build": "tsc",
     "test": "jest",
     "test:watch": "yarn test --watch",
-    "start": "tsc && node ./dist/src/index.js",
+    "start": "nodemon --ext ts --watch ./src --exec yarn run start:server",
+    "start:server": "node --inspect=9229 -r ts-node/register ./src/index.ts",
     "lint": "tslint --project tsconfig.json --config tslint.json",
     "lint:watch": "gulp"
   },
@@ -20,6 +22,7 @@
     "chai": "^4.1.2",
     "gulp": "^3.9.1",
     "jest": "22.4.4",
+    "nodemon": "^1.18.1",
     "supertest": "^3.1.0",
     "ts-jest": "^23.0.0",
     "ts-node": "^7.0.0",
